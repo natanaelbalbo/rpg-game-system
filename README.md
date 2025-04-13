@@ -111,6 +111,88 @@ A documentação completa da API está disponível em `http://localhost:3000/api
 - `PUT /api/magic-items/:id` - Atualizar item mágico
 - `DELETE /api/magic-items/:id` - Remover item mágico
 
+## Exemplos de Requisições
+
+### Criar Personagem
+```json
+POST /api/characters
+{
+  "name": "Gandalf",
+  "adventurerName": "O Cinzento",
+  "class": "Mago",
+  "level": 1,
+  "baseStrength": 4,
+  "baseDefense": 6
+}
+```
+
+### Atualizar Nome de Aventureiro
+```json
+PATCH /api/characters/:id/adventurer-name
+{
+  "adventurerName": "O Branco"
+}
+```
+
+### Criar Item Mágico
+```json
+POST /api/magic-items
+{
+  "name": "Cajado de Fogo",
+  "type": "Arma",
+  "strength": 8,
+  "defense": 0
+}
+```
+
+### Atualizar Item Mágico
+```json
+PUT /api/magic-items/:id
+{
+  "name": "Cajado de Gelo",
+  "type": "Arma",
+  "strength": 9,
+  "defense": 0
+}
+```
+
+### Adicionar Item ao Personagem
+```json
+POST /api/characters/:characterId/items/:itemId
+{
+  // Não requer corpo na requisição
+}
+```
+
+### Exemplos de Respostas
+
+#### Resposta de Criação de Personagem
+```json
+{
+  "id": "1",
+  "name": "Gandalf",
+  "adventurerName": "O Cinzento",
+  "class": "Mago",
+  "level": 1,
+  "baseStrength": 4,
+  "baseDefense": 6,
+  "totalStrength": 4,
+  "totalDefense": 6,
+  "items": []
+}
+```
+
+#### Resposta de Criação de Item Mágico
+```json
+{
+  "id": "1",
+  "name": "Cajado de Fogo",
+  "type": "Arma",
+  "strength": 8,
+  "defense": 0
+}
+```
+
 ## Estrutura do Projeto
 
 ```
@@ -128,7 +210,3 @@ A documentação completa da API está disponível em `http://localhost:3000/api
 ├── tsconfig.json          # Configuração do TypeScript
 └── README.md              # Este arquivo
 ```
-
-## Licença
-
-Este projeto está licenciado sob a licença ISC. 
